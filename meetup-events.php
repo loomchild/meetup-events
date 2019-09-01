@@ -231,3 +231,4 @@ function meetup_events_start() {
 
 // Register widgets
 add_action('widgets_init', create_function('', 'return register_widget("MeetupEventsListWidget");'));
+add_action('widgets_init', create_function('', 'return register_widget("MeetupEventsNextWidget");'));
