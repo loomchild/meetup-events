@@ -158,6 +158,7 @@ class MeetupEventsNextWidget extends WP_Widget {
       array_push( $filtered_events, $event );
     }
     $events = $filtered_events;
+		var_dump($events);
 
     if ( ! $events ) {
       print("To be announced.");
