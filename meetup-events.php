@@ -40,7 +40,6 @@ class MeetupEvents {
   public function get_data(){
     $options = get_option('meetup_events_options');
     $group = $options['meetup_events_group'];
-    $group = 'life-drawing-montmartre';
     $url = $this->api_url . $group . '/events';
     $event_response = wp_remote_get( $url );
     if( is_wp_error( $event_response )) {
