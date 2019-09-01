@@ -50,69 +50,8 @@ class MeetupEvents {
   }
 }
 
-class VsMeetNextWidget extends WP_Widget {
-  function VsMeetNextWidget() {
-    parent::WP_Widget(false, $name = 'Meetup Next Event', array('description' => "Display next upcoming event in the group."));	
-  }
-
-  function widget($args, $instance) {		
-    extract( $args );
-    $title = apply_filters('widget_title', $instance['title']);
-		$include = $instance['include'];
-		$exclude = $instance['exclude'];
-		$params = array(
-			"detail" => $instance['detail']
-		);
-    echo $before_widget;
-    if ( $title ) echo $before_title . $title . $after_title;
-    $vsm = new VsMeetWidget();
-    $html = $vsm->get_next_event($params, $include, $exclude);
-    echo $html;
-    echo $after_widget;
-  }
-
-  function update($new_instance, $old_instance) {				
-    $instance = $old_instance;
-    $instance['title'] = strip_tags($new_instance['title']);
-    $instance['include'] = strip_tags($new_instance['include']);
-    $instance['exclude'] = strip_tags($new_instance['exclude']);
-    $instance['detail'] = $new_instance['detail'];
-    
-    return $instance;
-  }
-
-  function form($instance) {
-    if ( $instance ) {
-      $title = esc_attr($instance['title']);
-      $include = esc_attr($instance['include']);
-      $exclude = esc_attr($instance['exclude']);
-      $detail = isset($instance['detail']);
-    } else {
-      $title = '';
-      $include = '';
-      $exclude = '';
-      $detail = false;
-    }
-    ?>
-      <p><label for="<?php echo $this->get_field_id('title'); ?>">Title:
-        <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
-      </label></p>
-      </label></p>
-      <p><label for="<?php echo $this->get_field_id('include'); ?>">Include:
-	    <input class="widefat" id="<?php echo $this->get_field_id('include'); ?>" name="<?php echo $this->get_field_name('include'); ?>" type="text" value="<?php echo $include; ?>" />
-      </label></p>
-      <p><label for="<?php echo $this->get_field_id('exclude'); ?>">Exclude:
-	    <input class="widefat" id="<?php echo $this->get_field_id('exclude'); ?>" name="<?php echo $this->get_field_name('exclude'); ?>" type="text" value="<?php echo $exclude; ?>" />
-      </label></p>
-      <p><label for="<?php echo $this->get_field_id('detail'); ?>">Show details:
-	    <input class="widefat" id="<?php echo $this->get_field_id('detail'); ?>" name="<?php echo $this->get_field_name('detail'); ?>" type="checkbox" value="1" <?php checked($detail); ?> />
-      </label></p>
-    <?php 
-  }
-}
-
-class VsMeetListWidget extends WP_Widget {
-  function VsMeetListWidget() {
+class MeetupEventsListWidget extends WP_Widget {
+  function MeetupEventsListWidget() {
     parent::WP_Widget(false, $name = 'Meetup List Event', array('description' => "Display a list of events."));	
   }
 
@@ -177,9 +116,8 @@ class VsMeetListWidget extends WP_Widget {
 }
 
 function meetup_widgets_start() {
-	$vsmw = new VsMeetWidget();
+	$vsmw = new MeetupEvents();
 } add_action( 'init', 'meetup_widgets_start' );
 
 // Register widgets
-add_action('widgets_init', create_function('', 'return register_widget("VsMeetNextWidget");'));
-add_action('widgets_init', create_function('', 'return register_widget("VsMeetListWidget");'));
+add_action('widgets_init', create_function('', 'return register_widget("MeetupEventsListWidget");'));
