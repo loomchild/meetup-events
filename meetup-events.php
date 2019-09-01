@@ -146,7 +146,6 @@ class MeetupEventsNextWidget extends WP_Widget {
     $out = '';
 
     $events = $meetup_events->get_data();
-		var_dump($events);
 
     $filtered_events = array();
     foreach ( $events as $event ) {
