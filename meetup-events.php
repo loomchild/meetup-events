@@ -73,6 +73,7 @@ class MeetupEventsListWidget extends WP_Widget {
   }
 
 	public function get_group_events( $meetup_events, $limit ) {
+    global $events;
     $events = $meetup_events->get_data();
     if ( ! $events )
       return;
