@@ -120,9 +120,9 @@ class MeetupEventsListWidget extends WP_Widget {
   }
 }
 
-function meetup_widgets_start() {
+function meetup_events_start() {
 	$vsmw = new MeetupEvents();
-} add_action( 'init', 'meetup_widgets_start' );
+} add_action( 'init', 'meetup_events_start' );
 
 // Register widgets
 add_action('widgets_init', create_function('', 'return register_widget("MeetupEventsListWidget");'));
