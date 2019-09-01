@@ -12,7 +12,7 @@ class MeetupEvents {
 	private $api_url = 'https://api.meetup.com/';
 
 	public function __construct() {
-		$options = get_option('vs_meet_options');
+		$options = get_option('meetup_events_options');
 		$this->group = $options['meetup_events_group'];
 
 		register_activation_hook( __FILE__, array ($this, 'install' ) );
@@ -37,8 +37,11 @@ class MeetupEvents {
     return $input;
 	}
 
-	public function get_data(){
-    $event_response = wp_remote_get( $this->base_url );
+  public function get_data(){
+    $options = get_option('meetup_events_options');
+    $group = $options['meetup_events_group'];
+    $url = $this->api_url . $group . '/events';
+    $event_response = wp_remote_get( $url );
     if( is_wp_error( $event_response )) {
       if ( WP_DEBUG ){
         var_dump($event_response);
