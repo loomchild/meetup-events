@@ -1,6 +1,5 @@
 <?php 
 global $event; 
-global $options; 
 global $params; 
 	
 $date = date( 'F d, Y', intval( $event->time/1000 + $event->utc_offset/1000 ) );
