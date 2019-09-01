@@ -77,6 +77,7 @@ class MeetupEventsListWidget extends WP_Widget {
     $events = $meetup_events->get_data();
     if ( ! $events )
       return;
+    $events = array_slice($events, 0, $limit);
 
     ob_start();
     get_template_part( 'meetup-list', 'group' );
