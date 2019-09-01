@@ -1,6 +1,6 @@
 <?php 
 global $event; 
-global $params; 
+global $detail;
 	
 $date = date( 'F d, Y', intval( $event->time/1000 + $event->utc_offset/1000 ) );
 $timefrom = date( 'g:i a', intval( $event->time/1000 + $event->utc_offset/1000 ) );
@@ -29,20 +29,16 @@ $spots = $full ? 0 : $limit - $attendees;
 
 <p class='event-location'><span class='event-what'>Location:</span> <?php echo $venue; ?></p>
 
-<?php if ( isset ( $params['detail'] )) {?>
+<?php if ( isset ( $detail )) {?>
 
 <?php
 if ( isset( $event->venue ) && ( $event->venue->name == 'Life Drawing Montmartre' || $event->venue->name == 'Untitled Factory' ) ) {
 	echo "<a href='https://maps.google.com/maps?q=$venue+%28".$event->venue->name."%29&z=17'><img src='/files/2018/08/googlemap.png'></a>";
 	if ( ! empty($event->how_to_find_us) ) { ?>
-<p class="event-findus"><?php echo $event->how_to_find_us; ?></p>
+		<p class="event-findus"><?php echo $event->how_to_find_us; ?></p>
 <?php 	}
-} else {
-	$venue = apply_filters( 'vsm_no_location_text', "Location: TBA" );
-	if ( ! empty( $venue ) ){
-		echo "<p class='event-location'>$venue</p>";
-	}
-}?>
+}
+?>
 
 <?php } ?>
 
