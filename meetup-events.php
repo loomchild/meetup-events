@@ -1,6 +1,6 @@
 <?php
 /*
- * Plugin Name: Meetup Widgets Loomchild
+ * Plugin Name: Meetup Events
  * Description: Widgets displaying events from Meetup.com
  * Version: 1
  * Author: Jarek Lipski
