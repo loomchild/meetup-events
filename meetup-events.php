@@ -41,6 +41,7 @@ class MeetupEvents {
     $options = get_option('meetup_events_options');
     $group = $options['meetup_events_group'];
     $url = $this->api_url . $group . '/events';
+    var_dump($url);
     $event_response = wp_remote_get( $url );
     if( is_wp_error( $event_response )) {
       if ( WP_DEBUG ){
