@@ -25,7 +25,6 @@ $spots = $full ? 0 : $limit - $attendees;
 <p class="event-date"><span class="event-what">Date:</span> <?php echo $date; ?></p>
 <p class="event-time"><span class="event-what">Times:</span> <?php echo $timefrom; ?> - <?php echo $timeto; ?></p>
 <?php endif; ?>
-<p class="event-summary"><?php echo wp_trim_words( strip_tags( $event->description ), 14 ); ?> <a href="<?php echo esc_url($event->link); ?>">read more</a></p>
 
 <p class='event-location'><span class='event-what'>Location:</span> <?php echo $venue; ?></p>
 
