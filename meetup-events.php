@@ -20,7 +20,7 @@ class MeetupEvents {
 	}
 	
 	function register_fields() {
-		register_setting( 'general', 'mettup_events_options', array($this, 'validate'));
+		register_setting( 'general', 'meetup_events_options', array($this, 'validate'));
 		add_settings_section('meetup_events', 'Meetup Settings', array($this, 'setting_section_meetup_events'), 'general');
 		add_settings_field('meetup_events_group', '<label for="meetup_events_group">Meetup Group:</label>' , array(&$this, 'setting_meetup_events_group') , 'general', 'meetup_events' );
   }
