@@ -42,7 +42,6 @@ class MeetupEvents {
     $group = $options['meetup_events_group'];
     $group = 'life-drawing-montmartre';
     $url = $this->api_url . $group . '/events';
-    var_dump($url);
     $event_response = wp_remote_get( $url );
     if( is_wp_error( $event_response )) {
       if ( WP_DEBUG ){
@@ -51,7 +50,6 @@ class MeetupEvents {
       return array();
     }
     $events = json_decode( $event_response['body'] );
-    var_dump($events);
 		return $events;
   }
 }
