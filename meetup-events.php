@@ -48,8 +48,8 @@ class MeetupEvents {
       }
       return array();
     }
-    var_dump($event_response);
     $events = json_decode( $event_response['body'] );
+    var_dump($events);
 		return $events;
   }
 }
