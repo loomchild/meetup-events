@@ -77,7 +77,6 @@ class MeetupEventsListWidget extends WP_Widget {
     if ( ! $events )
       return;
 
-    echo json_encode($events, JSON_PRETTY_PRINT);
     ob_start();
     get_template_part( 'meetup-list', 'group' );
     $out = ob_get_contents();
