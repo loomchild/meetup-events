@@ -134,18 +134,19 @@ class MeetupEventsNextWidget extends WP_Widget {
     echo $before_widget;
     if ( $title ) echo $before_title . $title . $after_title;
     $meetup_events = new MeetupEvents();
-    $html = $this->get_next_event($include, $exclude, $detail);
+    $html = $this->get_next_event( $meetup_events, $include, $exclude, $detail);
     echo $html;
     echo $after_widget;
   }
 
-  public function get_next_event($include, $exclude, $_detail) {
+  public function get_next_event($meetup_events, $include, $exclude, $_detail) {
     global $event;
     global $detail;
     $detail = $_detail;
     $out = '';
 
     $events = $meetup_events->get_data();
+		var_dump($events);
 
     $filtered_events = array();
     foreach ( $events as $event ) {
@@ -157,7 +158,6 @@ class MeetupEventsNextWidget extends WP_Widget {
       }
       array_push( $filtered_events, $event );
     }
-		var_dump($events);
     $events = $filtered_events;
 
     if ( ! $events ) {
